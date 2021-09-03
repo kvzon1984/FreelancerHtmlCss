@@ -1,0 +1,339 @@
+:root {
+    --blanco: #ffffff;
+    --oscuro: #212121;
+    --primario: #FFC107;
+    --secundario: #0097A7;
+    --gris: #757575;
+    --fuente-principal: 3.8rem;
+}
+
+html {
+    /*me elimina el box model */
+    box-sizing: border-box;
+    font-size: 62.5%;
+    /*Mejora el scroll ya que va por seccion*/
+    scroll-snap-type: y mandatory;
+}
+
+
+/*esta linea va junto para eliminar el box model*/
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+body {
+    font-size: 16px;
+    /* 1rem = 10px */
+    font-family: 'Krub', sans-serif;
+    /*el degradado del fondo para acceder se ocupar background-image: linear-gredent
+    luego le pasa la direccion del degradado de arriba abajo o de abajo hacia arriba
+    despues el color de inicio y luego el color de termino */
+    background-image: linear-gradient(to top, #DFE9F3 0%, var(--blanco) 100%);
+}
+
+
+/*va junto con el scroll-snap-type: e lo que hace es que se detiene o me lleva directo al 
+la clase que declare */
+
+.servicios,
+.navegacionPrincipal,
+.formulario {
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+}
+
+.contenedor {
+    max-width: 120rem;
+    margin: 0 auto;
+}
+
+h1 {
+    font-size: 3.8rem;
+}
+
+h2 {
+    font-size: 2.8rem;
+}
+
+h3 {
+    font-size: 1.8rem;
+}
+
+h1,
+h2,
+h3 {
+    text-align: center;
+}
+
+h1 span {
+    font-size: 2rem;
+}
+
+.boton {
+    background-color: var(--secundario);
+    color: var(--blanco);
+    padding: 1rem 3rem;
+    margin-top: 3.5rem;
+    font-size: 2rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    /*Coloca el texto en mayusculas*/
+    font-weight: bold;
+    border-radius: .5rem;
+    width: 75%;
+    text-align: center;
+    border: none;
+}
+
+.boton:hover {
+    cursor: pointer;
+}
+
+@media (min-width: 480px) {
+    .boton {
+        width: auto;
+    }
+}
+
+
+/*Utilidades*/
+
+.w-sm-100 {
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    .w-sm-100 {
+        width: auto;
+    }
+}
+
+.flex {
+    display: flex;
+}
+
+.alinear-derecha {
+    justify-content: flex-end;
+}
+
+.nav-bg {
+    background-color: var(--secundario);
+}
+
+.navegacionPrincipal {
+    /*Al colocar display:flex; lo que hace es habilitar el justify-content se aplica siempre al elemento padre de lo que quiero alinear*/
+    display: flex;
+    /*lo que hace ve la direeccion de los elementos row o  column si es row no es necesario colocarlo ya que viene por defecto en row*/
+    flex-direction: column;
+    align-items: center;
+    /*lo que hace es al ocupar column los ordena */
+}
+
+
+/*es para telefono*/
+
+@media (min-width: 480px) {}
+
+
+/*es para tablet*/
+
+@media (min-width: 768px) {
+    .navegacionPrincipal {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
+
+/*es para computadora*/
+
+@media (min-width: 1140px) {}
+
+@media (min-width: 1400px) {}
+
+.navegacionPrincipal a {
+    color: var(--blanco);
+    text-decoration: none;
+    font-size: 2rem;
+    font-weight: bold;
+    padding: 1.5rem;
+}
+
+.navegacionPrincipal a:hover {
+    background-color: var(--primario);
+    color: var(--oscuro);
+}
+
+.hero {
+    background-image: url(../imgs/hero.jpg);
+    /*Todas la imagenes vienen por defaul con un repeticion 
+    para no repetir la imagen es con brackground-repeat
+    */
+    background-repeat: no-repeat;
+    /*background-size:cover toma todo el ancho disponible */
+    background-size: cover;
+    /*posicion relaitive me permite posicionar al hijo debe ir relative y el hijo absolute*/
+    position: relative;
+    height: 450px;
+    margin-bottom: 2rem;
+}
+
+.contenido-hero {
+    position: absolute;
+    background-color: rgb(0, 0, 0, .4);
+    /* sintaxis Anterior*/
+    background-color: rgb(0 0 0/50%);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.contenido-hero h2,
+.contenido-hero p {
+    color: var(--blanco);
+}
+
+.ubicacion {
+    display: flex;
+    align-items: flex-end;
+}
+
+
+/*Servicios*/
+
+.sombra {
+    -webkit-box-shadow: 0px 5px 15px 0px rgba(112, 112, 112, 0.54);
+    -moz-box-shadow: 0px 5px 15px 0px rgba(112, 112, 112, 0.54);
+    box-shadow: 0px 5px 15px 0px rgba(112, 112, 112, 0.54);
+    background-color: var(--blanco);
+    padding: 2rem;
+    border-radius: 1rem;
+}
+
+@media (min-width: 768px) {
+    .servicios {
+        /*Display: grid se ocupa para dividir en cuadrillas un contenedor*/
+        display: grid;
+        grid: 1fr / 1fr 1fr 1fr;
+        /* 1fr es como poner una fraccion de 100%*/
+        /*la linea de arriba es lo mismo que abajo la primera etapa es para los rows y la segunda 
+        es para los columns 
+        grid-template-columns: 300px 300px;
+        grid-template-rows: 300px 800px; */
+        column-gap: 5rem;
+        /*clomun-grap es para una separacion entre grillas*/
+    }
+}
+
+.servicio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.servicios h3 {
+    color: var(--secundario);
+    font-weight: normal;
+}
+
+.servicio p {
+    line-height: 2;
+    /*line-height es para el interlineado en un parrafo*/
+}
+
+.servicio .iconos {
+    height: 15rem;
+    width: 15rem;
+    background-color: var(--primario);
+    border-radius: 50%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+
+/*Contacto*/
+
+.formulario {
+    background-color: var(--gris);
+    width: min( 60rem, 100%);
+    /* min(a,b) U+tilizar erl valor mas pequeño*/
+    margin: 0 auto;
+    padding: 2.5rem;
+    border-radius: 1rem;
+}
+
+.formulario fieldset {
+    border: none;
+}
+
+.formulario legend {
+    text-align: center;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    color: var(--primario);
+}
+
+@media (min-width: 768px) {
+    .contenedor-campos {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto 20rem;
+        column-gap: 1rem;
+    }
+    .campo:nth-child(3),
+    .campo:nth-child(4) {
+        grid-column: 1 / 3;
+    }
+}
+
+.campo {
+    margin-bottom: 1rem;
+}
+
+.campo label {
+    color: var(--blanco);
+    font-weight: bold;
+    margin-bottom: .5rem;
+    display: block;
+}
+
+.campo textarea {
+    height: 20rem;
+}
+
+
+/* uina forma de darle css a los input*/
+
+
+/* .campo input[type="text"],
+.campo input[type="tel"] {
+    background-color: #0097A7;
+} */
+
+.input-text {
+    width: 100%;
+    border: none;
+    padding: 1.5rem;
+    border-radius: .5rem;
+    margin-bottom: 2rem;
+}
+
+.enviar .boton {
+    width: 100%;
+}
+
+
+/*footer*/
+
+.footer {
+    text-align: center;
+}
